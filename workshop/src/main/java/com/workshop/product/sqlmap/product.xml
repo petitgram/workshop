@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="product">   
+
+	<resultMap id="productMap" type="Product">
+		<result property="code" column="code"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+		<result property="stock" column="stock"/>
+		<result property="description" column="description"/>
+	</resultMap> 
+		
+	<select id="view" parameterType="String" resultMap="productMap"> 
+	    select code,name,price,stock,description from product where code = #{code}
+	</select>
+	
+	<select id="list" resultMap="productMap">
+		select code,name,price,stock,description from product
+	</select>   
+	 
+	<insert id="insert" parameterType="Product"> 
+		insert into product (code,name,price,stock,description) 
+		values (#{code},#{name},#{price},#{stock},#{description})
+	</insert> 
+	
+	<update id="edit" parameterType="Product"> 
+		update product set name=#{name}, 
+					  	 price=#{price}, 
+						 stock=#{stock}, 
+						 description=#{description}
+				WHERE code = #{code}
+	</update> 
+	
+	<delete id="delete" parameterType="String"> 
+		delete from product WHERE code = #{code}
+	</delete>  
+
+</mapper>
