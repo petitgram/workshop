@@ -20,6 +20,17 @@
 	    });    
     });
     </script>
+    
+    
+    <c:if test="${nextPage!=null}">
+    <script>
+    $( document ).ready(function() {   
+	    setTimeout(function() {
+    	  window.location.href = "${nextPage}";
+    	}, 2000);
+    });
+    </script>
+    </c:if>
 
     </div><!-- /.container -->
 

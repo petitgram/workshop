@@ -52,13 +52,14 @@ public class FrontController {
 		try { 
 			service.save(new Product(code,name,price,stock,description));
 			model.addAttribute("message", "상품등록 성공"); 
+			model.addAttribute("nextPage", "list.do"); 
 			
 		}catch(Exception e){
 			model.addAttribute("message", "상품등록 실패");
 			e.printStackTrace();
 		}  
 			
-		return "result";
+		return "result";		 
 	}
 	
 	@RequestMapping(value="update.do" , method = RequestMethod.POST)
